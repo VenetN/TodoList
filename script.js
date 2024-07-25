@@ -11,7 +11,9 @@ let listeTasc = [];
 
 //1 - Ajouter une Tâche  => sur le clic sur btn ajouter
 let ajout = document.querySelector('#btnAjout');
-ajout.addEventListener('click',()=>{
+ajout.addEventListener('click',newToDo);
+    
+function newToDo(){
     //  1.1 - Lire l'input et récupérer sa valeur
     let saisie = document.querySelector('#saisie').value;
     //console.log(saisie);
@@ -22,7 +24,6 @@ ajout.addEventListener('click',()=>{
         // puis create la li  --------
         let newLi=document.createElement('li');
         newLi.className= "listeElt";
-        //newLi.textContent=saisie;
         list.appendChild(newLi);    
         // checkbox
         let newInput=document.createElement('input');
@@ -33,14 +34,25 @@ ajout.addEventListener('click',()=>{
         newP.className="task";
         newP.textContent=saisie;
         newLi.appendChild(newP);
+
+        
+
         // les 2 boutons
         let newBtnMaj=document.createElement('button');
         newBtnMaj.className="btnLi btnMaj";
         newBtnMaj.textContent="Modif";
         newLi.appendChild(newBtnMaj);
-        
+
+     
+
         newBtnMaj.addEventListener('click',()=>{
-            console.log("Maj")
+            //recup valeur dans un prompt
+            console.log(newP.textContent)
+            let texte = prompt("Changez le libéllé actuel : "+ newP.textContent);
+            console.log("["+ texte + "]");
+            if (texte !== null){
+                newP.textContent=texte;
+            }
         });
 
         let newBtnDel=document.createElement('button');
@@ -48,22 +60,46 @@ ajout.addEventListener('click',()=>{
         newBtnDel.textContent="Suppr";
         newLi.appendChild(newBtnDel);
         newBtnDel.addEventListener('click',()=>{
-            newLi.remove();
+            //newLi.remove();
+            newBtnDel.parentNode.remove();
+
+
+            ///splash  Suppression
+
         });
 
-        //  1.2 - Ajout d'un élément dans le tableau
-        let newTache = {lib:saisie, statut:"S"};
-        listeTasc.push(newTache);
-        // Vider la zone saisie
-        document.querySelector('#saisie').value="";
-//        for (i= 0;i<listeTasc.length;i++){
-//            console.log(listeTasc[i]);
-//        }
+         //  1.2 - Ajout d'un élément dans le tableau
+         let newTache = {lib:saisie, statut:"S"};
+         listeTasc.push(newTache);
+ 
+         // Vider la zone saisie
+         document.querySelector('#saisie').value="";
+         for (i= 0;i<listeTasc.length;i++){
+             console.log(i + "  " + listeTasc[i]);
+         }
+ 
 
+       /// TESTS 
+/*        console.log("----newLi.parentNode");
+        console.log(newLi.parentNode);
+        console.log("---newLi.previousSibling)")
+        console.log(newLi.previousSibling);
+        console.log("----newLi.nextSibling)");
+        console.log(newLi.nextSibling);
+
+        console.log("newBtnMaj.parentNode");
+      console.log(newBtnMaj.parentNode);
+           console.log("newBtnMaj.previousSibling)");
+        console.log(newBtnMaj.previousSibling);
+        console.log("newBtnMaj.nextSibling)");
+        console.log(newBtnMaj.nextSibling);
+*/
+
+       
     }
-});
+};
 
-
+/*
 //2- Modifier le libellé d'une tâche => sur le bouton Modif
 //let majAction=list.querySelectorAll(".btnMaj");
 function majLibTask(){
@@ -89,26 +125,4 @@ function delTask(){
 
 
 
-
-
-
-}
-
-
-
-    
-    
-
-////
-
-
-
-// 
-
-
-
-
-
-
-
-
+}*/
