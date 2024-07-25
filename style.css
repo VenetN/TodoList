@@ -1,0 +1,34 @@
+.task{
+    width: 40%;
+}
+#saisie{
+    width: 30%;
+    margin-left : 50px;
+}
+
+#enTete{
+    display: flex;
+    margin-left : 50px;
+    margin-top: 50px;
+}
+
+ul{
+    width: 80%;
+    list-style-type:none;
+}
+
+/*li{
+    background-color: aquamarine;
+}*/
+
+.listeElt{
+    display: flex;
+}
+.btnLi {
+    height: 50%;
+    /*width: auto;*/
+}
+.inputFini{
+    margin-left: 10px;
+    margin-right: 10px;
+}
